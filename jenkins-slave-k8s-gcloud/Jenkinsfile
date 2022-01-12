@@ -18,7 +18,7 @@ pipeline {
                     sh 'docker login -u $DOCKER_HUB_PRIVATE_KEY_USR -p $DOCKER_HUB_PRIVATE_KEY_PSW'
 
                     dockerImage = 'docker build -f jenkins-slave-k8s-gcloud/Dockerfile -t squarecookie/jenkins-slave-k8s-gcloud:latest'
-                    
+
                     sh 'docker push squarecookie/jenkins-slave-k8s-gcloud:latest'
                 }
             }

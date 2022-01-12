@@ -1,0 +1,27 @@
+pipeline {
+    environment {
+        DOCKER_HUB_PRIVATE_KEY = credentials('wph-docker-hub')
+    }
+
+    tools {
+        dockerTool 'docker'
+    }
+
+    agent {
+        label 'docker-slave'
+    }
+
+    stages {
+        stage('build and push wph1720637550/jenkins-slave-k8s-gcloud-flutter:latest to DockerHub public image repository'){
+            steps{
+                script{
+                    sh 'docker login -u $DOCKER_HUB_PRIVATE_KEY_USR -p $DOCKER_HUB_PRIVATE_KEY_PSW'
+
+                    dockerImage = 'docker build -f jenkins-slave-k8s-gcloud-flutter/Dockerfile -t wph1720637550/jenkins-slave-k8s-gcloud-flutter:latest'
+
+                    sh 'docker push wph1720637550/jenkins-slave-k8s-gcloud-flutter:latest'
+                }
+            }
+        }
+    }
+}
