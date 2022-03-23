@@ -1,25 +1,26 @@
 pipeline {
-    environment {
-        DOCKER_HUB_PRIVATE_KEY = credentials('docker-hub-private-key')
-    }
-
-    tools {
-        dockerTool 'docker'
-    }
-
-    agent {
-        label 'docker-slave'
-    }
+    agent any
 
     stages {
-        stage('build and push squarecookie/jenkins-slave-k8s-gcloud:latest to DockerHub public image repository'){
+        stage('Build and push image') {
+            tools {
+                dockerTool 'docker'
+            }
+
             steps{
-                script{
-                    sh 'docker login -u $DOCKER_HUB_PRIVATE_KEY_USR -p $DOCKER_HUB_PRIVATE_KEY_PSW'
+                script {
+                    docker.withTool('docker') {
+                        docker.withRegistry("", 'wph-docker-hub') {
+                            def imageName = "squarecookie/jenkins-slave-k8s-gcloud:latest"
+                            def dockerFileDir = "jenkins-slave-k8s-gcloud-flutter"
 
-                    dockerImage = 'docker build -f jenkins-slave-k8s-gcloud/Dockerfile -t squarecookie/jenkins-slave-k8s-gcloud:latest'
-
-                    sh 'docker push squarecookie/jenkins-slave-k8s-gcloud:latest'
+                            def customImage = docker.build(imageName, dockerFileDir)
+                            /* Push the container to the custom Registry */
+                            customImage.push()
+                            sh "docker rmi $imageName"
+                            cleanWs()
+                        }
+                    }
                 }
             }
         }
