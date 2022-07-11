@@ -95,7 +95,7 @@ export const NavBarUnconnected = React.memo(({ navBarTree }: Props) => {
       <div className={styles.spacer} />
 
       <NavBarSection>
-        {bottomItems.filter((link, index) => {link.id !== 'help'}).map((link, index) => (
+        {bottomItems.filter((link, index) => {return link.text !== 'Help'}).map((link, index) => (
           <NavBarItem
           key={`${link.id}-${index}`}
           isActive={isMatchOrChildMatch(link, activeItem)}
