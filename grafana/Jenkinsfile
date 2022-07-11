@@ -11,7 +11,7 @@ pipeline {
                 script {
                     docker.withTool('docker') {
                         docker.withRegistry("", 'wph-docker-hub') {
-                            def imageName = "wph1720637550/jenkins-slave-k8s-gcloud-grafana:latest"
+                            def imageName = "squarecookie/grafana-custom-brand:latest"
                             def dockerFileDir = "./grafana"
 
                             def customImage = docker.build(imageName, dockerFileDir)
