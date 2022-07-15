@@ -10,7 +10,7 @@ pipeline {
             steps{
                 script {
                     docker.withTool('docker') {
-                        docker.withRegistry("", 'wph-docker-hub') {
+                        docker.withRegistry("", 'docker-hub-bot') {
                             def imageName = "squarecookie/jenkins-slave-k8s-gcloud-flutter:latest"
                             def dockerFileDir = "jenkins-slave-k8s-gcloud-flutter"
 

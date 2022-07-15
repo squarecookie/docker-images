@@ -10,7 +10,7 @@ pipeline {
             steps{
                 script {
                     docker.withTool('docker') {
-                        docker.withRegistry("", 'wph-docker-hub') {
+                        docker.withRegistry("", 'docker-hub-bot') {
                             def imageName = "wph1720637550/jenkins-slave-k8s-gcloud-grafana-from-github:latest"
                             def dockerFileDir = "./grafana"
 
