@@ -11,8 +11,8 @@ pipeline {
                 script {
                     docker.withTool('docker') {
                         docker.withRegistry("", 'docker-hub-bot') {
-                            def imageName = "squarecookie/jenkins-slave-k8s-gcloud:latest"
-                            def dockerFileDir = "jenkins-slave-k8s-gcloud"
+                            def imageName = "squarecookie/jenkins-slave-go:latest"
+                            def dockerFileDir = "jenkins-slave-go"
 
                             def customImage = docker.build(imageName, dockerFileDir)
                             /* Push the container to the custom Registry */
