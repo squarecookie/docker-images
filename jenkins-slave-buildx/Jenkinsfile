@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build and push image') {
+            tools {
+                dockerTool 'docker'
+            }
+
+            steps{
+                script {
+                    docker.withTool('docker') {
+                        docker.withRegistry("", 'docker-hub-bot') {
+                            def imageName = "squarecookie/jenkins-slave-buildx:latest"
+                            def dockerFileDir = "jenkins-slave-buildx"
+
+                            def customImage = docker.build(imageName, dockerFileDir)
+                            /* Push the container to the custom Registry */
+                            customImage.push()
+                            sh "docker rmi $imageName"
+                            cleanWs()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
