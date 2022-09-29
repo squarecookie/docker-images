@@ -11,7 +11,7 @@ pipeline {
                 script {
                     docker.withTool('docker') {
                         docker.withRegistry("", 'docker-hub-bot') {
-                            def imageName = "squarecookie/jenkins-slave-buildx:latest"
+                            def imageName = "squarecookie/jenkins-slave-buildx:latest-jdk11"
                             def dockerFileDir = "jenkins-slave-buildx"
 
                             def customImage = docker.build(imageName, dockerFileDir)
