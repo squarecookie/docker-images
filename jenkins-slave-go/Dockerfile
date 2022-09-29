@@ -1,4 +1,4 @@
-FROM jenkins/ssh-slave:alpine
+FROM jenkins/ssh-slave:latest-jdk11
 
 # RUN set -ex
 # RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories

@@ -1,4 +1,4 @@
-FROM jenkins/ssh-slave:latest
+FROM jenkins/ssh-slave:latest-jdk11
 
 #Dockerfile resource url: https://github.com/edwardinubuntu/flutter-web-dockerfile/blob/master/Dockerfile
 
