@@ -2,7 +2,7 @@ FROM jenkins/ssh-slave:latest-jdk11
 
 # RUN set -ex
 # RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-RUN apk add gcc tar gcompat build-base
+RUN apt-get update && apt-get install gcc tar gcompat build-base
 
 RUN wget -P /usr/local https://go.dev/dl/go1.19.linux-amd64.tar.gz
 # COPY go1.19.linux-amd64.tar.gz /usr/local
