@@ -1,4 +1,4 @@
-FROM jenkins/ssh-slave:latest
+FROM jenkins/ssh-slave:latest-jdk11
 
 ENV PATH $PATH:/usr/local/python3/bin/
 ENV PYTHONIOENCODING utf-8
