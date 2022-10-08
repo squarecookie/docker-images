@@ -1,2 +1,11 @@
 FROM jenkins/ssh-slave:latest-jdk11
-RUN apt-get update && apt-get install -y qemu-user-static && curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+
+# https://github.com/docker/buildx/issues/493
+# https://github.com/tonistiigi/binfmt
+RUN docker run --privileged --rm tonistiigi/binfmt --install all
+
+RUN apt-get update && curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+
+## https://github.com/docker/buildx/issues/493
+## https://github.com/tonistiigi/binfmt
+#RUN docker run --privileged --rm tonistiigi/binfmt --install all
