@@ -11,7 +11,7 @@ pipeline {
                 script {
                     docker.withTool('docker') {
                         docker.withRegistry("", 'docker-hub-bot') {
-                            def imageName = "squarecookie/jenkins-slave-k8s-gcloud:latest-jdk11"
+                            def imageName = "squarecookie/jenkins-slave-k8s-gcloud:latest-jdk11-0.1"
                             def dockerFileDir = "jenkins-slave-k8s-gcloud"
 
                             def customImage = docker.build(imageName, dockerFileDir)
