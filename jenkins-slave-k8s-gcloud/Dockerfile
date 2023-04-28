@@ -21,4 +21,9 @@ RUN gcloud init
 #RUN gcloud components update
 RUN apt-get update && apt-get --only-upgrade install google-cloud-sdk-spanner-emulator google-cloud-sdk-datastore-emulator google-cloud-sdk-kpt google-cloud-sdk-kubectl-oidc google-cloud-sdk-cbt google-cloud-sdk-app-engine-java google-cloud-sdk-skaffold google-cloud-sdk-datalab google-cloud-sdk-minikube google-cloud-sdk-cloud-run-proxy google-cloud-sdk-harbourbridge google-cloud-sdk-terraform-tools google-cloud-sdk-bigtable-emulator google-cloud-sdk-cloud-build-local google-cloud-sdk-nomos google-cloud-sdk-gke-gcloud-auth-plugin google-cloud-sdk-app-engine-go google-cloud-sdk-config-connector google-cloud-sdk-package-go-module google-cloud-sdk-firestore-emulator google-cloud-sdk-app-engine-grpc google-cloud-sdk-pubsub-emulator google-cloud-sdk-app-engine-python google-cloud-sdk-local-extract google-cloud-sdk google-cloud-sdk-anthos-auth google-cloud-sdk-app-engine-python-extras kubectl
 
+RUN gke-gcloud-auth-plugin --version \
+    && export USE_GKE_GCLOUD_AUTH_PLUGIN=True \
+    && source ~/.bashrc \
+    && gcloud components update
+
 
