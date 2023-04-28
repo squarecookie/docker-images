@@ -3,7 +3,7 @@ FROM jenkins/ssh-slave:latest-jdk11
 ENV PATH $PATH:/usr/local/python3/bin/
 ENV PYTHONIOENCODING utf-8
 
-RUN export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+#RUN export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 RUN set -ex
 
