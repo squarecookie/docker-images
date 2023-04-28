@@ -33,7 +33,7 @@ RUN cat /etc/profile
 
 RUN gke-gcloud-auth-plugin --version \
     && echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True" >> /etc/profile \
-    && source /etc/profile \
+    && . /etc/profile \
     && gcloud components update
 
 
