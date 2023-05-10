@@ -9,9 +9,10 @@ RUN apt-get update \
     && apt-get install -y curl git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 zip unzip \
     && apt-get clean
 
-RUN wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip
+RUN wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip \
+    && unzip commandlinetools-linux-8512546_latest.zip
 
-RUN unzip commandlinetools-linux-8512546_latest.zip
+#RUN unzip commandlinetools-linux-8512546_latest.zip
 
 ENV PATH $PATH:/usr/local/apps/cereb/cmdline-tools/bin/
 
