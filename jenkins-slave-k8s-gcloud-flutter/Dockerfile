@@ -20,7 +20,7 @@ RUN mkdir -p /usr/local/apps/cereb/android-sdk
 ENV ANDROID_SDK_ROOT /usr/local/apps/cereb/android-sdk
 
 RUN yes | sdkmanager --licenses --sdk_root="/usr/local/apps/cereb/android-sdk"
-RUN yes | sdkmanager "platform-tools" "platforms;android-31" "cmdline-tools;latest" "patcher;v4" "emulator" "build-tools;29.0.2" \
+RUN yes | sdkmanager "platform-tools" "platforms;android-31" "cmdline-tools;latest" "build-tools;29.0.2" \
     --sdk_root="/usr/local/apps/cereb/android-sdk"
 
 ENV PATH "$PATH:/usr/local/apps/cereb/android-sdk/platform-tools"
